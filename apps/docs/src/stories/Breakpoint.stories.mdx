@@ -56,4 +56,17 @@ To overwrite them, use the `boxProps` prop as follows:
   >
     {Template.bind({})}
   </Story>
+  <Story
+    name="Custom style"
+    args={{
+      boxProps: {
+        display: "inline-block",
+        position: "static",
+        bg: "red.500",
+        color: "white",
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>

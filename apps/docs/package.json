@@ -27,5 +27,8 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint-config-custom": "*",
     "webpack": "^5.75.0"
+  },
+  "engines": {
+    "node": "16"
   }
 }

@@ -1192,11 +1192,6 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@brahman-ui/react@workspace:0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@brahman-ui/react/-/react-0.0.0.tgz#4b666a098fc8a0eaa470acbd07f12c987ed8b206"
-  integrity sha512-3C2RX6vLDzeHZmZ97pSc1WCNC+efPJKpfT4w7GBw7qhL1wzO6XKWd0TWJWtG4mEd4ULp3Zy6IbQOTyrHgNfG/A==
-
 "@chakra-ui/accordion@2.1.4":
   version "2.1.4"
   resolved "https://registry.npmjs.org/@chakra-ui/accordion/-/accordion-2.1.4.tgz"

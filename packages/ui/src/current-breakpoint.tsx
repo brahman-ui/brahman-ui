@@ -26,11 +26,11 @@ const MatchedBreakpont = ({ children, ...boxProps }: MatchedBreakpontProps) => {
   );
 };
 
-type BreakpointProps = {
+type CurrentBreakpointProps = {
   boxProps?: BoxProps;
 };
 
-export const Breakpoint = ({ boxProps }: BreakpointProps) => {
+export const CurrentBreakpoint = ({ boxProps }: CurrentBreakpointProps) => {
   const [hasMounted, setHasMounted] = useState(false);
   const { breakpoints } = useTheme();
   const bp = useBreakpoint({ ssr: false });

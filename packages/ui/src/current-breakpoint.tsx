@@ -1,12 +1,35 @@
 import { useEffect, useState } from "react";
 import { Box, BoxProps, useBreakpoint, useTheme } from "@chakra-ui/react";
 
-type MatchedBreakpontProps = {
-  children: React.ReactNode;
+type CurrentBreakpointProps = {
   boxProps?: BoxProps;
+  transformFn?: (name: string, value: string) => string;
 };
 
-const MatchedBreakpont = ({ children, ...boxProps }: MatchedBreakpontProps) => {
+function defaultTransformFn(name: string, value: string): string {
+  return `${name}`;
+}
+
+export const CurrentBreakpoint = ({
+  boxProps,
+  transformFn,
+}: CurrentBreakpointProps) => {
+  const [hasMounted, setHasMounted] = useState(false);
+  const { breakpoints } = useTheme();
+  const bp = useBreakpoint({ ssr: false });
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+
+  const text = transformFn
+    ? transformFn(bp, breakpoints[bp])
+    : defaultTransformFn(bp, breakpoints[bp]);
+
   return (
     <Box
       position="fixed"
@@ -21,39 +44,7 @@ const MatchedBreakpont = ({ children, ...boxProps }: MatchedBreakpontProps) => {
       zIndex="overlay"
       {...boxProps}
     >
-      {children}
+      {text}
     </Box>
-  );
-};
-
-type CurrentBreakpointProps = {
-  boxProps?: BoxProps;
-};
-
-export const CurrentBreakpoint = ({ boxProps }: CurrentBreakpointProps) => {
-  const [hasMounted, setHasMounted] = useState(false);
-  const { breakpoints } = useTheme();
-  const bp = useBreakpoint({ ssr: false });
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) {
-    return null;
-  }
-
-  return (
-    <>
-      {Object.keys(breakpoints)?.map((key) => {
-        if (key !== bp) return null;
-
-        return (
-          <MatchedBreakpont key={key} {...boxProps}>
-            {key}
-          </MatchedBreakpont>
-        );
-      })}
-    </>
   );
 };
